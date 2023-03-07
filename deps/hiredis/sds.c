@@ -85,6 +85,7 @@ sds sdsnewlen(const void *init, size_t initlen) {
     /* Empty strings are usually created in order to append. Use type 8
      * since type 5 is not good at this. */
     if (type == SDS_TYPE_5 && initlen == 0) type = SDS_TYPE_8;
+    // hdrlen 只是sds 结构体的长度，不包含数据长度
     int hdrlen = sdsHdrSize(type);
     unsigned char *fp; /* flags pointer. */
 
